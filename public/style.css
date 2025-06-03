@@ -1,0 +1,203 @@
+/* === Layout === */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  
+  main {
+    width: 90%;
+    max-width: 1000px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* === Navbar === */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #004466; 
+    color: white;
+    padding: 10px 30px;
+  }
+  
+  .navbar h1 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  
+  .navbar .nav-right a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+  }
+  
+  .navbar .nav-right a:hover {
+    color: #cc5500; 
+    text-decoration: underline;
+  }
+  
+  /* === Headings === */
+  h2, legend {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #cc5500; 
+  }
+  
+  /* === Form === */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[readonly] {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+  }
+  
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  input[type="date"]:focus {
+    border-color: #302f2f; 
+    outline: none;
+    box-shadow: 0 0 5px #3a3a3a;
+  }
+  
+  /* === Checkbox & Radio Sections === */
+  .checkbox-group,
+  .radio-group {
+    padding: 15px;
+    background-color: #e6f2ff; 
+    border-radius: 6px;
+    border: 1px solid #004466;
+  }
+  
+  .checkbox-group label,
+  .radio-group label {
+    font-weight: normal;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  /* === Rating Table === */
+  .radio-group table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: #dfffe0; 
+  }
+  
+  .radio-group th,
+  .radio-group td {
+    border: 1px solid #004466;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .radio-group th {
+    background-color: #004466; 
+    color: white;
+  }
+  
+  /* === Submit Button === */
+  button[type="submit"] {
+    align-self: center;
+    padding: 12px 30px;
+    background-color: #004466; 
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #cc5500; 
+  }
+
+  /* === Real-time validation feedback === */
+input:focus {
+  border-color: #66b2ff; 
+  background-color: #e6f2ff;
+}
+
+input.valid {
+  border-color: #28a745;
+  background-color: #dfffe0; 
+}
+
+input.invalid {
+  border-color: #dc3545;
+  background-color: #ffe6e6;
+}
+
+.error {
+  color: #dc3545;
+  font-size: 0.85em;
+  margin-top: 4px;
+}
+
+/* === Results Section === */
+.results-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+  width: 100%;
+}
+
+.results-table {
+  border-collapse: collapse;
+  width: 100%;
+  max-width: 600px;
+  background-color: #e6f2ff; 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 0 auto; 
+}
+
+.results-table th {
+  background-color: #004466; 
+  color: white;
+  text-align: left;
+  padding: 12px 16px;
+}
+
+.results-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #ccc;
+}
+
+.results-table tr:last-child td {
+  border-bottom: none;
+}
+
+.results-table tr:hover {
+  background-color: #dfffe0; 
+
+
+  

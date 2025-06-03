@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Lifestyle Survey</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav-left">
+            <h1>_Surveys</h1>
+        </div>
+        <div class="nav-right">
+          <a href="index.html">Fill Out Survey</a>
+          <a href="results.html">View Survey Results</a>
+        </div>
+    </nav>
+
+<h2>Lifestyle Survey</h2>
+<form id="surveyForm">
+  <fieldset>
+    <legend>Personal Details:</legend>
+
+    <label>
+      Full Names:
+      <input type="text" id="name" name="name" required>
+      <small class="error" id="name-error"></small>
+    </label>
+
+    <label>
+      Email:
+      <input type="email" id="email" name="email" required>
+      <small class="error" id="email-error"></small>
+    </label>
+
+    <label>
+      Date of Birth:
+      <input type="date" id="dob" name="dob" required>
+    </label>
+
+    <label>
+      Age:
+      <input type="text" name="age" id="age" readonly>
+    </label>
+
+    <label>
+      Contact Number:
+      <input type="tel" id="contact" name="contact" maxlength="10" required>
+      <small class="error" id="contact-error"></small>
+    </label>
+  </fieldset>
+
+  
+      <div class="checkbox-group">
+        <p><strong>Favourite Foods:</strong></p>
+        <label><input type="checkbox" name="food" value="Pizza"> Pizza</label>
+        <label><input type="checkbox" name="food" value="Pasta"> Pasta</label>
+        <label><input type="checkbox" name="food" value="Pap and Wors"> Pap and Wors</label>
+        <label><input type="checkbox" name="food" value="Other"> Other</label>
+      </div>
+
+      <div class="radio-group">
+        <p><strong>Please rate your level of agreement on a scale from 1 (Strongly Agree) to 5 (Strongly Disagree):</strong></p>
+        <table border="1" cellpadding="10" cellspacing="0">
+          <thead>
+            <tr>
+              <th>Question</th>
+              <th>Strongly Agree<br>(1)</th>
+              <th>Agree<br>(2)</th>
+              <th>Neutral<br>(3)</th>
+              <th>Disagree<br>(4)</th>
+              <th>Strongly Disagree<br>(5)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>I like to watch movies</td>
+              <td><input type="radio" name="watchMovies" value="1" required></td>
+              <td><input type="radio" name="watchMovies" value="2"></td>
+              <td><input type="radio" name="watchMovies" value="3"></td>
+              <td><input type="radio" name="watchMovies" value="4"></td>
+              <td><input type="radio" name="watchMovies" value="5"></td>
+            </tr>
+            <tr>
+              <td>I like to listen to the radio</td>
+              <td><input type="radio" name="listenRadio" value="1" required></td>
+              <td><input type="radio" name="listenRadio" value="2"></td>
+              <td><input type="radio" name="listenRadio" value="3"></td>
+              <td><input type="radio" name="listenRadio" value="4"></td>
+              <td><input type="radio" name="listenRadio" value="5"></td>
+            </tr>
+            <tr>
+              <td>I like to eat out</td>
+              <td><input type="radio" name="eatOut" value="1" required></td>
+              <td><input type="radio" name="eatOut" value="2"></td>
+              <td><input type="radio" name="eatOut" value="3"></td>
+              <td><input type="radio" name="eatOut" value="4"></td>
+              <td><input type="radio" name="eatOut" value="5"></td>
+            </tr>
+            <tr>
+              <td>I like to watch TV</td>
+              <td><input type="radio" name="watchTV" value="1" required></td>
+              <td><input type="radio" name="watchTV" value="2"></td>
+              <td><input type="radio" name="watchTV" value="3"></td>
+              <td><input type="radio" name="watchTV" value="4"></td>
+              <td><input type="radio" name="watchTV" value="5"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+
+      <button type="submit">Submit</button>
+  </form>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
