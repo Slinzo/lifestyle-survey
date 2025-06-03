@@ -1,15 +1,17 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const container = document.getElementById('results-container');
-  
-    try {
-      const res = await fetch('/results');
-      const data = await res.json();
-  
-      if (!data || data.length === 0) {
-        container.innerHTML = `<p>No Surveys Available.</p>`;
-        return;
-      }
-  
+  const container = document.getElementById('results-container');
+
+  try {
+    const res = await fetch('/results');
+    if (!res.ok) throw new Error("Failed to fetch results");
+
+    const data = await res.json();
+
+    if (data.length === 0) {
+      container.innerHTML = `<p>No survey data available yet.</p>`;
+      return;
+    }
+
       const total = data.length;
       const ages = data.map(d => d.age);
       const avgAge = (ages.reduce((a, b) => a + b, 0) / total).toFixed(1);
@@ -47,10 +49,11 @@ document.addEventListener('DOMContentLoaded', async () => {
           <tr><th>Avg Rating - Watch TV</th><td>${watchTVAvg}</td></tr>
         </table>
       `;
-    } catch (err) {
-      console.error("Failed to load results:", err);
-      container.innerHTML = `<p>Error loading results.</p>`;
+
+    } catch (error) {
+      container.innerHTML = `<p style="color: red;">Unable to load results at this time.</p>`;
+      console.error("Error loading results:", error);
     }
-  });
+  });  
   
   
