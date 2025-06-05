@@ -1,4 +1,4 @@
-/* === Layout === */
+
 body {
     font-family: Arial, sans-serif;
     background-color: #f9f9f9;
@@ -16,8 +16,7 @@ body {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
-  
-  /* === Navbar === */
+
   .navbar {
     display: flex;
     justify-content: space-between;
@@ -43,15 +42,13 @@ body {
     color: #cc5500; 
     text-decoration: underline;
   }
-  
-  /* === Headings === */
+
   h2, legend {
     text-align: center;
     margin-bottom: 30px;
     color: #cc5500; 
   }
-  
-  /* === Form === */
+
   form {
     display: flex;
     flex-direction: column;
@@ -84,8 +81,7 @@ body {
     outline: none;
     box-shadow: 0 0 5px #3a3a3a;
   }
-  
-  /* === Checkbox & Radio Sections === */
+
   .checkbox-group,
   .radio-group {
     padding: 15px;
@@ -100,8 +96,7 @@ body {
     display: block;
     margin-bottom: 5px;
   }
-  
-  /* === Rating Table === */
+
   .radio-group table {
     width: 100%;
     border-collapse: collapse;
@@ -120,8 +115,7 @@ body {
     background-color: #004466; 
     color: white;
   }
-  
-  /* === Submit Button === */
+
   button[type="submit"] {
     align-self: center;
     padding: 12px 30px;
@@ -138,7 +132,6 @@ body {
     background-color: #cc5500; 
   }
 
-  /* === Real-time validation feedback === */
 input:focus {
   border-color: #66b2ff; 
   background-color: #e6f2ff;
@@ -160,7 +153,6 @@ input.invalid {
   margin-top: 4px;
 }
 
-/* === Results Section === */
 .results-wrapper {
   display: flex;
   justify-content: center;
@@ -198,6 +190,26 @@ input.invalid {
 
 .results-table tr:hover {
   background-color: #dfffe0; 
+}
 
+.survey-info-box {
+  background-color: #e6f4ff; /* Light blue background */
+  border-left: 6px solid #3399cc; /* Darker blue accent */
+  padding: 15px 20px;
+  margin-bottom: 30px;
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
 
-  
+.survey-info-box h3 {
+  margin-top: 0;
+  color: #004466;
+  font-size: 1.2rem;
+}
+
+.survey-info-box p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
