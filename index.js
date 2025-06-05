@@ -1,20 +1,22 @@
-const express = require('express');
+const fs       = require('fs');
+const path     = require('path');
+const express  = require('express');
+const cors     = require('cors');
 const bodyParser = require('body-parser');
-const cors = require('cors');
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
+const sqlite3  = require('sqlite3').verbose();
 
-const app = express();
+const app  = express();
 const port = 3000;
 
-// Middleware
-app.use(cors());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(express.static('public'));
+/* ---------- Ensure db directory exists ---------- */
+const dbDir = path.join(__dirname, 'db');
+if (!fs.existsSync(dbDir)) {
+  fs.mkdirSync(dbDir);
+}
 
-// SQLite database setup
-const db = new sqlite3.Database('./db/survey.db', (err) => {
+/* ---------- SQLite connection ---------- */
+const dbPath = path.join(dbDir, 'survey.db');
+const db = new sqlite3.Database(dbPath, (err) => {
   if (err) {
     console.error('Could not connect to database', err);
   } else {
@@ -22,7 +24,7 @@ const db = new sqlite3.Database('./db/survey.db', (err) => {
   }
 });
 
-//creates the table if it doesn't exist already
+/* ---------- Create table if it doesn’t exist ---------- */
 db.run(`
   CREATE TABLE IF NOT EXISTS surveys (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -45,40 +47,58 @@ db.run(`
   }
 });
 
+/* ---------- Middleware ---------- */
+app.use(cors());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(express.static('public'));
 
-// Route: Save survey
+/* ---------- Routes ---------- */
+
+/* Save survey */
 app.post('/submit-survey', (req, res) => {
-  const { name, email, age, dob, contact, food, eatOut, watchMovies, watchTV, listenRadio } = req.body;
+  const { name, email, age, dob, contact, food,
+          eatOut, watchMovies, watchTV, listenRadio } = req.body;
 
   const foodSelection = Array.isArray(food) ? food.join(', ') : food;
 
   const sql = `
-  INSERT INTO surveys (name, email, age, dob, contact, food, watchMovies, listenRadio, eatOut, watchTV)
-  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-`;
+    INSERT INTO surveys
+      (name, email, age, dob, contact, food,
+       watchMovies, listenRadio, eatOut, watchTV)
+    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+  `;
 
-  db.run(sql, [name, email, age, dob, contact, foodSelection, eatOut, watchMovies, watchTV, listenRadio], (err) => {
-    if (err) {
-      console.error(err.message);
-      res.status(500).send('Failed to save survey.');
-    } else {
-      res.status(200).send('Survey saved successfully.');
+  db.run(
+    sql,
+    [
+      name, email, age, dob, contact, foodSelection,
+      watchMovies, listenRadio, eatOut, watchTV
+    ],
+    (err) => {
+      if (err) {
+        console.error(err.message);
+        res.status(500).send('Failed to save survey.');
+      } else {
+        res.status(200).send('Survey saved successfully.');
+      }
     }
-  });
+  );
 });
 
-// Route: Get survey results
+/* Get all survey rows (used by results.js) */
 app.get('/results', (req, res) => {
   db.all(`SELECT * FROM surveys`, (err, rows) => {
     if (err) {
-      res.status(500).send("Database error");
+      console.error(err.message);
+      res.status(500).send('Database error');
     } else {
       res.json(rows);
     }
   });
 });
 
-// Start the server
+/* ---------- Start server ---------- */
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });
